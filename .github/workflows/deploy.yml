@@ -1,29 +1,30 @@
-# ← Comments (lines beginning with “#”) are purely for your benefit
-name: Deploy Vite+React to GitHub Pages # Optional: shown in the Actions UI
+name: Deploy Vite+React to GitHub Pages
 
-on: # REQUIRED: event(s) that trigger this workflow
+on:
     push:
         branches:
-            - main # REQUIRED: list of branches to watch
+            - main
 
-jobs: # REQUIRED: defines one or more jobs
-    build-and-deploy: # Job ID (you choose)—must be unique under `jobs`
-        runs-on: ubuntu-latest # REQUIRED: specifies the runner environment
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
 
-        steps: # REQUIRED: each job must list one or more steps
-            - name: Checkout code # Optional: human-readable step name
-              uses: actions/checkout@v3 # REQUIRED for checking out your repo
-
-            - name: Setup Node.js # Optional name
-              uses: actions/setup-node@v3 # REQUIRED if you need Node
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
               with:
-                  node-version: 18 # REQUIRED by the action
+                  node-version: 18
 
             - name: Install dependencies
-              run: npm ci # REQUIRED if you want a clean install
+              working-directory: ./vite-project
+              run: npm ci
 
             - name: Build
-              run: npm run build # REQUIRED: your build command
+              working-directory: ./vite-project
+              run: npm run build
 
             - name: Deploy to GitHub Pages
-              run: npx gh-pages -d dist -b gh-pages # REQUIRED: your deploy command
+              working-directory: ./vite-project
+              run: npx gh-pages -d dist -b gh-pages
