@@ -1,10 +1,7 @@
-import "./App.css";
-
+import { Router,BrowserRouter } from "react-router-dom";
 function App() {
     return (
-        <>
-            <p>Welcome</p>
-        </>
+        
     );
 }
 
