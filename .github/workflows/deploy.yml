@@ -1,5 +1,8 @@
 name: Deploy Vite+React to GitHub Pages
 
+permissions:
+    contents: write # grant the GITHUB_TOKEN push permissions
+
 on:
     push:
         branches:
@@ -35,4 +38,4 @@ jobs:
               working-directory: ./vite-project
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              run: npx gh-pages -d dist -b gh-pages
+              run: npx gh-pages -d dist -b gh-pages -r "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
