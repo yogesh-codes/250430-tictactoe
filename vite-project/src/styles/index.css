@@ -19,4 +19,12 @@
     button:active {
         all: revert;
     }
+
+    input {
+        all: revert;
+    }
+
+    h1 {
+        @apply text-5xl text-center;
+    }
 }

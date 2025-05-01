@@ -1,43 +1,47 @@
-import { useState } from "react";
+import { useState, ReactElement } from "react";
 
 //Components
 import { Square, SquarePropsType } from "./Square/Square";
-import { PlayerBoxPropsType } from "../PlayerBox/PlayerBox";
 
-type BoardProps = {
-    playerX: PlayerBoxPropsType;
-    playerO: PlayerBoxPropsType;
-};
+//Prop Type
+// type BoardProps = {
+//     playerX: PlayerBoxPropsType;
+//     playerO: PlayerBoxPropsType;
+// };
 
-function Board({ playerX, playerO }: BoardProps) {
-    let items: SquarePropsType[] = [];
-    for (let i = 0; i < 9; i++) {
-        items.push({
-            id: i.toString(),
-            key: i.toString(),
-            state: "none",
-            onClick: null,
-        });
-    }
-    const [squareArray, setSquareArray] = useState<SquarePropsType[]>(items);
+//GameContext
+import { useGameContext } from "../GameContext/GameContext";
+import { toast } from "react-toastify";
 
-    const [currentPlayer, setCurrentPlayer] =
-        useState<PlayerBoxPropsType>(playerX);
+function Board() {
+    // let items: SquarePropsType[] = [];
+    // for (let i = 0; i < 9; i++) {
+    //     items.push({
+    //         id: i.toString(),
+    //         key: i.toString(),
+    //         state: "none",
+    //         onClick: null,
+    //     });
+    // }
+    // const [squareArray, setSquareArray] = useState<SquarePropsType[]>(items);
 
-    const handleOnClick = (idx: string) => {
-        const id: number = parseInt(idx);
-        const square = squareArray[id];
+    const gameContext = useGameContext();
 
-        if (square.state == "none") {
-            //toast
-            return;
-        } else {
-            const updatedSquare = squareArray.slice();
-            updatedSquare[id].state = currentPlayer?.mark;
-        }
-    };
+    // const handleOnClickSquare = (idx: string) => {
+    //     const id: number = parseInt(idx);
+    //     const square = squareArray[id];
 
-    let SquareComponents = [];
+    //     if (square.state !== "none") {
+    //         toast("Square is already set.")
+    //         return;
+    //     } else {
+
+    //         const updatedSquare = squareArray.slice();
+    //         updatedSquare[id].state = gameContext.currentPlayer.mark;
+    //     }
+    // };
+
+    let SquareComponents: ReactElement<SquarePropsType>[] = [];
     for (let i = 0; i < 9; i++) {
         SquareComponents.push(
             <Square

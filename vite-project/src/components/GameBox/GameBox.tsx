@@ -2,31 +2,26 @@
 import { Board } from "../Board/Board";
 
 import { PlayerBox, PlayerBoxPropsType } from "../PlayerBox/PlayerBox";
+import { toast } from "react-toastify";
+//import { PlayerPropType } from "../../scripts/player";
+import { useGameContext } from "../GameContext/GameContext";
 
 function GameBox() {
-    const playerX: PlayerBoxPropsType = {
-        playerName: "Player 1",
-        mark: "x",
-        score: 0,
-    };
-    const playerO: PlayerBoxPropsType = {
-        playerName: "Player 2",
-        mark: "o",
-        score: 0,
-    };
+    const handleRestartButtonOnClick = () =>
+        //e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+        {
+            //Reset the board};
+            toast("You clicked reset button");
+        };
 
-    const handleRestartButtonOnClick = (
-        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        //Reset the board};
-    };
+    const gameContext = useGameContext();
 
     return (
         <div className="aspect-square">
             <div className="flex items-center justify-between ">
-                <PlayerBox {...playerX} />
-                <Board playerX={playerX} playerO={playerO} />
-                <PlayerBox {...playerO} />
+                <PlayerBox {...gameContext.playerX} />
+                <Board />
+                <PlayerBox {...gameContext.playerO} />
             </div>
             <div>
                 <button onClick={handleRestartButtonOnClick}>Restart</button>
