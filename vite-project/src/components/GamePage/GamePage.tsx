@@ -1,10 +1,13 @@
+//Components
 import Header from "../Header/Header";
+import { GameBox } from "../GameBox/GameBox";
 
 function GamePage() {
     return (
-        <div>
+        <div className="flex flex-col items-center w-full bg-green-200">
             <Header />
-            <p>Game Page</p>
+            <h1>Game Page</h1>
+            <GameBox />
         </div>
     );
 }

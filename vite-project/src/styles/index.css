@@ -5,3 +5,18 @@
     --breakpoint-xs: 30rem;
     --breakpoint-xxs: 15em;
 }
+
+@layer base {
+    /* reset every <button> to a blank slate */
+    button {
+        all: revert;
+    }
+
+    button:hover {
+        all: revert;
+    }
+
+    button:active {
+        all: revert;
+    }
+}
