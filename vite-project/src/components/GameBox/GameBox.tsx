@@ -1,7 +1,7 @@
 //Components
 import { Board } from "../Board/Board";
 
-import { PlayerBox, PlayerBoxPropsType } from "../PlayerBox/PlayerBox";
+import { PlayerBox } from "../PlayerBox/PlayerBox";
 import { toast } from "react-toastify";
 //import { PlayerPropType } from "../../scripts/player";
 import { useGameContext } from "../GameContext/GameContext";

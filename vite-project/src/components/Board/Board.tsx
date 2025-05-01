@@ -1,4 +1,4 @@
-import { useState, ReactElement } from "react";
+import { ReactElement } from "react";
 
 //Components
 import { Square, SquarePropsType } from "./Square/Square";
@@ -11,7 +11,6 @@ import { Square, SquarePropsType } from "./Square/Square";
 
 //GameContext
 import { useGameContext } from "../GameContext/GameContext";
-import { toast } from "react-toastify";
 
 function Board() {
     // let items: SquarePropsType[] = [];
@@ -26,6 +25,7 @@ function Board() {
     // const [squareArray, setSquareArray] = useState<SquarePropsType[]>(items);
 
     const gameContext = useGameContext();
+    console.log(gameContext);
 
     // const handleOnClickSquare = (idx: string) => {
     //     const id: number = parseInt(idx);
