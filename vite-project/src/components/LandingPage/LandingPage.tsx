@@ -1,8 +1,7 @@
-import { toast } from "react-toastify";
 import Header from "../Header/Header";
 import { useGameContext } from "../GameContext/GameContext";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 function LandingPage() {
     const { playerX, playerO, setPlayerX, setPlayerO } = useGameContext();
