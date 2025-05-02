@@ -8,7 +8,8 @@ function GamePage() {
             <Header />
             <h1>Game Page</h1>
             <div className=" flex flex-col justify-center ">
-                <div className="w-80 h-8 bg-blue-200"></div>
+                <div className="w-80 sm:w-100 md:w-140"></div>
+
                 <GameBox />
             </div>
         </div>

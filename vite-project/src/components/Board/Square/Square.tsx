@@ -1,22 +1,24 @@
+import { Mark } from "../../../scripts/gameUtils";
+
 type SquarePropsType = {
     id: string;
-    state: "none" | "x" | "o";
-    onClick: (() => void) | null;
+    mark: Mark;
+    handleOnClick: (() => void) | null;
     className: string;
 };
 
-function Square({ id, state, onClick, className }: SquarePropsType) {
+function Square({ id, mark, handleOnClick, className }: SquarePropsType) {
     return (
-        <div
+        <button
             id={id}
             key={id}
-            className={`${className} aspect-square min-w-8 flex justify-center items-center bg-amber-200 hover:bg-amber-100 cursor-pointer`} //{`w-12 h-12 flex justify-center items-center bg-amber-200 hover:bg-amber-100 cursor-pointer`}
-            onClick={() => {
-                if (onClick) onClick();
+            className={`${className} text-5xl aspect-square min-w-8 flex justify-center items-center bg-amber-200 hover:bg-amber-100 cursor-pointer `} //{`w-12 h-12 flex justify-center items-center bg-amber-200 hover:bg-amber-100 cursor-pointer`}
+            onClick={(_e) => {
+                if (handleOnClick) handleOnClick();
             }}
         >
-            {state === "none" ? "" : state}
-        </div>
+            {mark === "none" ? "" : mark}
+        </button>
     );
 }
 
