@@ -1,20 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-    --color-grumpy-100: #f2edde;
     --breakpoint-xs: 30rem;
     --breakpoint-xxs: 15em;
+
+    --color-logo: #304d6d;
+
+    --color-primary: #304d6d; /*1e3a8a;*/
+    --color-secondary: #82a0bc;
+    --color-accent: #d7907b;
+
+    --color-fg: #111111;
+    --color-neutral: #aaaaaa;
+    --color-bg: #ffffff;
+    /* --color-fg: #111827; */
 }
+
+/* default (light) theme variables */
 
 @layer base {
     /* reset every <button> to a blank slate */
 
     button {
         all: revert;
+        @apply bg-bg text-fg;
     }
 
-    button:hover {
+    button:hover,
+    button:active {
         all: revert;
+        @apply bg-primary text-bg;
     }
 
     button:active {
@@ -26,6 +41,55 @@
     }
 
     h1 {
-        @apply text-5xl text-center;
+        @apply text-5xl text-center text-fg;
+    }
+
+    body {
+        @apply bg-bg text-fg;
+    }
+
+    p {
+        @apply text-fg;
     }
 }
+
+@layer theme {
+    .theme-dark {
+        --color-primary: #1263eb;
+        --color-secondary: #7931c1;
+        --color-accent: #fbbf24;
+
+        --color-bg: #111827;
+        --color-neutral: #446435;
+        --color-fg: #f9fafb;
+    }
+
+    .theme-ocean {
+        --color-primary: #0e3490;
+        --color-secondary: #0284c7;
+        --color-accent: #06b6d4;
+        --color-bg: #e0f2fe;
+        --color-fg: #0f172a;
+    }
+
+    .theme-sunset {
+        --color-primary: #dff363;
+        --color-secondary: #e5490b;
+        --color-accent: #6e26ad;
+        --color-bg: #601603;
+        --color-fg: #d5d1a2;
+    }
+
+    .theme-nature {
+        --color-primary: #283618;
+        --color-secondary: #606c38;
+        --color-accent: #dda15e; /*BC6C25*/
+        --color-bg: #fefae0;
+        --color-fg: #2a1d0f;
+    }
+}
+
+/* Ocean theme */
+/*
+    
+        */
