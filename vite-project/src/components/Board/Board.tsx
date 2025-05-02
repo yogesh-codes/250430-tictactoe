@@ -49,12 +49,16 @@ function Board() {
                 key={i.toString()}
                 state="none"
                 onClick={null}
+                className=""
             />
         );
     }
 
     return (
-        <div className="m-2 grid grid-cols-3 w-40 gap-1 aspect-square bg-amber-800 place-items-center">
+        <div
+            id="board"
+            className="m-2 grid grid-cols-3 gap-1 aspect-square bg-amber-800"
+        >
             {SquareComponents}
         </div>
     );

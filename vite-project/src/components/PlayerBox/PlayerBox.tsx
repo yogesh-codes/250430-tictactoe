@@ -6,7 +6,7 @@ type PlayerBoxPropsType = {
 
 function PlayerBox({ playerName, mark, score }: PlayerBoxPropsType) {
     return (
-        <div className="w-40 h-20 bg-green-700 mx-2">
+        <div className="min-w- min-h-8 bg-green-700 mx-2">
             <h3>
                 {playerName}-{mark.toUpperCase()}
             </h3>

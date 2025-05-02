@@ -17,11 +17,19 @@ function GameBox() {
     const gameContext = useGameContext();
 
     return (
-        <div className="aspect-square">
-            <div className="flex items-center justify-between ">
-                <PlayerBox {...gameContext.playerX} />
-                <Board />
-                <PlayerBox {...gameContext.playerO} />
+        <div className=" bg-red-400">
+            <div className="grid">
+                <div className="row-start-1 sm:row-start-1 col-start-1 sm:col-start-1 col-span-1 sm:col-span-2">
+                    <Board />
+                </div>
+
+                <div className="row-start-2 sm:row-start-2 col-span-1 sm:col-span-1">
+                    <PlayerBox {...gameContext.playerX} />
+                </div>
+
+                <div className="row-start-3 sm:row-start-2 col-span-1 sm:col-span-1">
+                    <PlayerBox {...gameContext.playerO} />
+                </div>
             </div>
             <div>
                 <button onClick={handleRestartButtonOnClick}>Restart</button>
