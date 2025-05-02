@@ -8,6 +8,14 @@ import {
 } from "react";
 import { PlayerBoxPropsType } from "../PlayerBox/PlayerBox";
 
+type GameStatusType =
+    | "restarted"
+    | "inProgress"
+    | "completedWin"
+    | "completedDraw";
+type WinnerPlayerType = PlayerBoxPropsType | null;
+type WinningIndicesType = [number, number, number] | null;
+
 type GameContextType = {
     resetSignal: boolean;
     setResetSignal: Dispatch<SetStateAction<boolean>>;
@@ -17,6 +25,12 @@ type GameContextType = {
     setPlayerO: Dispatch<SetStateAction<PlayerBoxPropsType>>;
     currentPlayer: PlayerBoxPropsType;
     setCurrentPlayer: Dispatch<SetStateAction<PlayerBoxPropsType>>;
+    gameStatus: GameStatusType;
+    setGameStatus: Dispatch<SetStateAction<GameStatusType>>;
+    winnerPlayer: WinnerPlayerType;
+    setWinnerPlayer: Dispatch<SetStateAction<WinnerPlayerType>>;
+    winningIndices: WinningIndicesType;
+    setWinningIndices: Dispatch<SetStateAction<WinningIndicesType>>;
 };
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
@@ -46,6 +60,13 @@ function GameProvider({ children }: { children: ReactNode }) {
     const [currentPlayer, setCurrentPlayer] =
         useState<PlayerBoxPropsType>(playerX);
 
+    const [gameStatus, setGameStatus] = useState<GameStatusType>("restarted");
+
+    const [winnerPlayer, setWinnerPlayer] = useState<WinnerPlayerType>(null);
+
+    const [winningIndices, setWinningIndices] =
+        useState<WinningIndicesType>(null);
+
     return (
         <GameContext.Provider
             value={{
@@ -57,6 +78,12 @@ function GameProvider({ children }: { children: ReactNode }) {
                 setPlayerO,
                 currentPlayer,
                 setCurrentPlayer,
+                gameStatus,
+                setGameStatus,
+                winnerPlayer,
+                setWinnerPlayer,
+                winningIndices,
+                setWinningIndices,
             }}
         >
             {children}
