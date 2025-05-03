@@ -5,7 +5,7 @@ type Theme =
     | "theme-light"
     | "theme-dark"
     | "theme-ocean"
-    | "theme-sunset"
+    | "theme-solar"
     | "theme-nature";
 
 function ThemeToggler() {
@@ -13,7 +13,7 @@ function ThemeToggler() {
         "theme-light",
         "theme-dark",
         "theme-ocean",
-        "theme-sunset",
+        "theme-solar",
         "theme-nature",
     ];
 
@@ -67,7 +67,7 @@ function ThemeToggler() {
             </button>
             <button
                 onClick={() => {
-                    handleOnClickToggle("theme-sunset");
+                    handleOnClickToggle("theme-solar");
                 }}
             >
                 sunset

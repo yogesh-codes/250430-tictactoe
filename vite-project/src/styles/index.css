@@ -23,7 +23,7 @@
 
     button {
         all: revert;
-        @apply bg-bg text-fg;
+        @apply bg-neutral text-fg;
     }
 
     button:hover,
@@ -60,7 +60,7 @@
         --color-accent: #fbbf24;
 
         --color-bg: #111827;
-        --color-neutral: #446435;
+        --color-neutral: #212d49;
         --color-fg: #f9fafb;
     }
 
@@ -69,22 +69,25 @@
         --color-secondary: #0284c7;
         --color-accent: #06b6d4;
         --color-bg: #e0f2fe;
+        --color-neutral: #abd8f6;
         --color-fg: #0f172a;
     }
 
-    .theme-sunset {
+    .theme-solar {
         --color-primary: #dff363;
         --color-secondary: #e5490b;
         --color-accent: #6e26ad;
         --color-bg: #601603;
-        --color-fg: #d5d1a2;
+        --color-neutral: #79301e;
+        --color-fg: #fffac2;
     }
 
     .theme-nature {
         --color-primary: #283618;
-        --color-secondary: #606c38;
+        --color-secondary: #90a156;
         --color-accent: #dda15e; /*BC6C25*/
         --color-bg: #fefae0;
+        --color-neutral: #efe5a5;
         --color-fg: #2a1d0f;
     }
 }
