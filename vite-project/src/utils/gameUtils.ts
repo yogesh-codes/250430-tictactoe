@@ -1,13 +1,13 @@
 // src/gameUtils.ts
 
-type Mark = "x" | "o" | "none";
+type MarkType = "x" | "o" | "none";
 
 type WinnerResult = {
-    winningMark: Exclude<Mark, "none">;
+    winningMark: Exclude<MarkType, "none">;
     winningIndices: [number, number, number];
 } | null;
 
-const checkWinner = (squareMarks: Mark[]): WinnerResult => {
+const checkWinner = (squareMarks: MarkType[]): WinnerResult => {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -31,4 +31,4 @@ const checkWinner = (squareMarks: Mark[]): WinnerResult => {
     return null;
 };
 
-export { checkWinner, type Mark };
+export { checkWinner, type MarkType };

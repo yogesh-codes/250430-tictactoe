@@ -10,9 +10,9 @@ import { Square, SquarePropsType } from "./Square/Square";
 // };
 
 //GameContext
-import { useGameContext } from "../GameContext/GameContext";
+import { useGameContext } from "../../context/GameContext/GameContext";
 import { toast } from "react-toastify";
-import { checkWinner, Mark } from "../../scripts/gameUtils";
+import { checkWinner, MarkType } from "../../utils/gameUtils";
 
 function Board() {
     const gameContext = useGameContext();
@@ -100,24 +100,38 @@ function Board() {
         );
     }
 
+    const highlightWinningSquares = (
+        winningIndices: [number, number, number]
+    ) => {
+        SquareComponents = SquareComponents.map((item) => {
+            if (parseInt(item.props.id) in winningIndices) {
+                return { ...item, className: "active" };
+            } else {
+                return { ...item };
+            }
+        });
+    };
+
     //watch for board changes
     useEffect(() => {
-        const squareMarks: Mark[] = squareArray.map((item) => {
+        //
+        const squareMarks: MarkType[] = squareArray.map((item) => {
             return item.mark;
         });
         const result = checkWinner(squareMarks);
         if (result) {
             const { winningMark, winningIndices } = result;
             // map mark back to the player object
-
-            gameContext.setWinnerPlayer(
+            const winner =
                 winningMark === gameContext.playerX.mark
                     ? gameContext.playerX
-                    : gameContext.playerO
-            );
+                    : gameContext.playerO;
 
+            gameContext.setWinnerPlayer(winner);
             gameContext.setGameStatus("completedWin");
+
             gameContext.setWinningIndices(winningIndices);
+            highlightWinningSquares(winningIndices);
         } else if (squareMarks.every((m) => m !== "none")) {
             // all filled, no winner → draw
             gameContext.setGameStatus("completedDraw");
@@ -129,7 +143,10 @@ function Board() {
         gameContext.playerX,
         gameContext.playerO,
         gameContext.setGameStatus,
+        gameContext.winnerPlayer,
         gameContext.setWinnerPlayer,
+        gameContext.winningIndices,
+        gameContext.setWinningIndices,
     ]);
 
     useEffect(() => {
@@ -141,10 +158,7 @@ function Board() {
     }, [gameContext.gameStatus]);
 
     return (
-        <div
-            id="board"
-            className="m-2 grid grid-cols-3 gap-1 aspect-square bg-amber-800"
-        >
+        <div id="board" className="m-2 grid grid-cols-3 gap-1 aspect-square">
             {SquareComponents}
         </div>
     );

@@ -6,13 +6,15 @@ import {
     SetStateAction,
     Dispatch,
 } from "react";
-import { PlayerBoxPropsType } from "../PlayerBox/PlayerBox";
+
+import { PlayerBoxPropsType } from "../../components/PlayerBox/PlayerBox";
 
 type GameStatusType =
     | "restarted"
     | "inProgress"
     | "completedWin"
     | "completedDraw";
+
 type WinnerPlayerType = PlayerBoxPropsType | null;
 type WinningIndicesType = [number, number, number] | null;
 

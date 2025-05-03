@@ -1,14 +1,14 @@
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 //Components
-import LandingPage from "./components/LandingPage/LandingPage";
-import GamePage from "./components/GamePage/GamePage";
-import SettingsPage from "./components/SettingsPage/SettingsPage";
-import PageNotFoundPage from "./components/PageNotFoundPage/PageNotFoundPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import GamePage from "./pages/GamePage/GamePage";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import PageNotFoundPage from "./pages/PageNotFoundPage/PageNotFoundPage";
 
 //
 import { ToastContainer } from "react-toastify";
-import { GameProvider } from "./components/GameContext/GameContext";
+import { GameProvider } from "./context/GameContext/GameContext";
 
 function App() {
     return (
